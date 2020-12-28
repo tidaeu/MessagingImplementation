@@ -22,9 +22,9 @@ namespace EventBusImpl.RabbitMQ
             => bus.SubscribeAsync<TEvent>(msg => handler.HandleAsync(msg),
                 ctx => ctx.UseSubscribeConfiguration(cfg =>
                     cfg.FromDeclaredQueue(q => q.WithName(GetQueueName<TEvent>()))));
-
+        
         private static string GetQueueName<T>()
-             => $"{Assembly.GetEntryAssembly().GetName()}/{typeof(T).Name}";
+            => $"{typeof(T).Namespace}.{typeof(T).Name}";
 
         public static void AddRabbitMq(this IServiceCollection service, IConfiguration configuration)
         {

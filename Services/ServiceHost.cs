@@ -93,17 +93,6 @@ namespace EventBusImpl.Services
 
                 return this;
             }
-
-            // public BusBuilder SubscribeToEvent<TEvent>() where TEvent : IEvent
-            // {
-            //     var handler = (IEventHandler<TEvent>)_webHost.Services
-            //         .GetService(typeof(IEventHandler<TEvent>));
-
-            //     _bus.WithEventHandlerAsync(handler);
-
-            //     return this;
-            // }
-
             public override ServiceHost Build()
             {
                 return new ServiceHost(_webHost);
